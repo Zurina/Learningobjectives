@@ -669,31 +669,35 @@
                     }
 - **Serial or parallel execution with async/await.**
 
-        async function serial(count) {
-        swappiPeople = [];
-        for (let i = 1; i < count; i++) {
-            swappiPeople.push(
-            //Observe the await 
-            await fetch("https://swapi.co/api/people/" + i)
-                .then(res => { return res.json() }));
-        }
-        console.log(swappiPeople.map(p=>p.name).join(", "));
-        }
-        async function parallel(count) {
-        swappiPeople = [];
-        for (let i = 1; i < count; i++) {
-            swappiPeople.push(
-            //Observe no await
-            fetch("https://swapi.co/api/people/" + i)
-                .then(res => { return res.json() }));
-        }
-        const allEntries = await Promise.all(swappiPeople);
-        console.log(allEntries.map(p=>p.name).join(", "));  
-        
-        }
-        //Time each of the two strategies
-        //serial(15); SLOW
-        parallel(15); // FAST
+    -   This is sequantial
+
+            async function serial(count) {
+            swappiPeople = [];
+            for (let i = 1; i < count; i++) {
+                swappiPeople.push(
+                //Observe the await 
+                await fetch("https://swapi.co/api/people/" + i)
+                    .then(res => { return res.json() }));
+            }
+            console.log(swappiPeople.map(p=>p.name).join(", "));
+            }
+            //serial(15); SLOW
+
+    - This is parralel
+
+            async function parallel(count) {
+            swappiPeople = [];
+            for (let i = 1; i < count; i++) {
+                swappiPeople.push(
+                //Observe no await
+                fetch("https://swapi.co/api/people/" + i)
+                    .then(res => { return res.json() }));
+            }
+            const allEntries = await Promise.all(swappiPeople);
+            console.log(allEntries.map(p=>p.name).join(", "));  
+            
+            }
+            parallel(15); // FAST
 
 
 
