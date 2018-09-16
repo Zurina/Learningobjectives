@@ -1,7 +1,7 @@
 # Period-1 Vanilla JavaScript, es2015/15.., Node.js, Babel + Webpack and TypeScript
 
 ## Explain and Reflect:
-- Explain differences between Java and JavaScript. You should include both topics related to the fact that Java is a compiled language and JavaScript a scripted language, and general differences in language features.
+- **Explain differences between Java and JavaScript. You should include both topics related to the fact that Java is a compiled language and JavaScript a scripted language, and general differences in language features.**
 
     - JavaScript is dynamicly typed, and is a functional scripting/programming language where you can use a function as a parameter. JavaScript is “the” scripting language to use in web development, where as Java is mostly used for backends, and IoT. Java is statically typed. Java needs to be compiled(to machine lang in the Virtual Machine), where as JavaScript is text based and does not need compilation. Java has block based scoping, where JS har function based scoping.
     
@@ -11,7 +11,7 @@
     Javascript is dynamically typed, wich means the type-checking is done at runtime.
     - Java is maninly block-scoped, while javascript is mainly function scoped.  
     - Java uses bytecode to be platform independent, while javascript is dependent on the browser supporting it and it's features. 
-- Explain the two strategies for improving JavaScript: ES6 (es2015) + ES7, versus Typescript. What does it require to use these technologies: In our backend with Node and in (many different) Browsers
+- **Explain the two strategies for improving JavaScript: ES6 (es2015) + ES7, versus Typescript. What does it require to use these technologies: In our backend with Node and in (many different) Browsers**
 
     - JavaScript versions are way ahead of the versions that are supported in the browsers. But for the comfort of developers, and to use the new features of ES6+ES7, we can write these in development, then we can transpile the code to an elder version of JS(ES5), so that the elder browsers can run our code as well. Typescript is a superset of JS, that "lays on top" of ES6 and adds even more features, as stricter types, and interfaces, and as with Babel we can use Typescript to transpile the codebase into ES5, once again making til runnable in elder browsers.
 
@@ -21,7 +21,7 @@
     - It helps with String formatting, var msg = `hey, my name is ${mathæus}` etc
     - Typescript helps writing correct code and ensuring correct types of arguments in methods/constructors
 
-- Explain generally about node.js, when it “makes sense” and npm, and how it “fits” into the node echo system.
+- **Explain generally about node.js, when it “makes sense” and npm, and how it “fits” into the node echo system.**
 
     - Node.js is a server-side platform, created on the Google Chrome V8 engine. It is a tool that allows us to make applications, not only for browser but also desktop, and other devices. It also allows us to do asynchronous functions in JS, using the event-loop. We also get to use npm witch gives us access to alot of premade JS code/modules. Npm is also a package manager, and holds version control over your added packages.
     
@@ -31,7 +31,7 @@
     - npm is very useful at using other peoples code, so you dont have to invent everything yourself. 
 
 
-- Explain about the Event Loop in Node.js
+- **Explain about the Event Loop in Node.js**
 
     - JavaScript is a single threaded language, meaning that originally we could not preform async. requests. Thats where we use a web API, supplied by the V8 engine. This allows us to kick our async. functions over in a C++ code that executes them, and returns them when ready. The loop goes as so : Func() enters the Call Stack in JS, if it is a async function, it will be sent to the web API, witch will execute the async code, then it will get sent to the call Queue, where it sits until the CallStack is empty and ready to execute the next task.
 
@@ -47,7 +47,7 @@
         - check: setImmediate() callbacks are invoked here.
         - close callbacks: some close callbacks, e.g. socket.on('close', ...).
 
-- Explain (some) of the purposes with the tools Babel and WebPack, using  examples from the exercises
+- **Explain (some) of the purposes with the tools Babel and WebPack, using  examples from the exercises**
 
     - Babel is used when we want to transpile our JS code, into an older version. This is practical, because most modern browsers do not support the newest JS code, and we want our application to run in all browsers, and our development to be with the most modern tech. Webpack (webpack guide), is a bundler or "packaging tool", webpack allows us to compress our codebase to be as small as possible, because then our .js file will be smaller, thus faster to download/upload. The bundler also shortens variablenames and removes all spaces, making the code humanly undreadable, but still understandable for the computer
 
@@ -98,7 +98,7 @@
                 }
             };   
 
-- Explain the purpose of “use strict” and Linters, exemplified with ESLint 
+- **Explain the purpose of “use strict” and Linters, exemplified with ESLint** 
 
     - Linting is the process of checking the source code for Programmatic as well as Stylistic errors. This is most helpful in identifying some common and uncommon mistakes that are made during coding. ESLint, helps developers, when coding by showing typing mistakes, and scoping errors and such, before runtime, and Throw them as errors or underline errors with red. This helps you to remember to define variables, and not trying to do things that are not possible, as setting a variable that is readonly to a new value. It also helps you to not use the reserved keywords of JS as variable names and such.
 
@@ -127,7 +127,7 @@
 
 ## Explain using sufficient code examples the following features in JavaScript. 
 
-- Variable/function-Hoisting
+- **Variable/function-Hoisting**
     - hoisting means all "var x;" i lifted to the top of the script.
     - All functions with this syntax - function hello() {} are also hoisted to the top of the script.
             
@@ -150,7 +150,7 @@
                 console.log("Hello world again!")
             }
 
-- This in JavaScript and how it differs from what we know from Java/.net.
+- **This in JavaScript and how it differs from what we know from Java/.net.**
 
     - This mainly points to the global object. When making objects/classes this points to that class. 
     If a property function of a class takes a callback, that callback has to be binded to the object's "this" or using a arrow function.
@@ -167,9 +167,9 @@
             Parent scope of above is global I guess.
     
 
-- Function Closures and the JavaScript Module Pattern
+- **Function Closures and the JavaScript Module Pattern**
 
-    - Javascript closures is Javascript's way of making private variables. You call a function that returns a function/object with scope to the parent/called function. Hence the return function/object is the only one having access to the parent function.
+    - Javascript closures is Javascript's way of making private variables. You call a function that returns a function/object with scope to the parent/called function. Hence the return function/object is the only one having access to the parent function. Javascript closures are essentially just functions/objects having access to the parent function's scope.
             
             var makeCounter = function() {
                 var counter = 0;
@@ -182,7 +182,20 @@
                     }
                 }
             }
-- Immediately-Invoked Function Expressions (IIFE)
+    - Javascript module pattern is about encapsulating a piece of code. It can be used to hiding away implementation, and only reveal what you need to via certain methods and variables (private methods/variables - closures). The module pattern makes it easier to test the code, since the code inside the pattern is independent from other code. It is also great for reuseability, just export it. 
+    You can say that the module pattern makes use of closures. 
+
+            var Module = (function() {
+                    // Following function is private, but can be accessed by the public functions
+                function privateFunc() { ... };
+                    // Return an object that is assigned to Module
+                return {
+                    publicFunc: function() {
+                        privateFunc(); // publicFunc has direct access to privateFunc
+                    }
+                };
+            }());
+- **Immediately-Invoked Function Expressions (IIFE)**
 
     - IIFE can prevent function hoisting
             
@@ -190,13 +203,13 @@
                 return 2
             })())
     - This function is immediatly called. 
-- JavaScripts Prototype
+- **JavaScripts Prototype**
 
     - Prototyping in javascript can be used to apply new variables or methods to object constructors.
     - Prototyping can also be use for inheritance
 
             ShowDog.prototype = new Dog(); // Our ShowDog instances inherits from ShowDog.prototype which inherits from Dog.prototype, Chaining.
-- User defined Callback Functions (writing your own functions that takes a callback)
+- **User defined Callback Functions (This can both be synchronous callbacks or async)**
 
     - synchronous callback
 
@@ -215,14 +228,23 @@
                 }
                 return filteredArray;
             }
-
             console.log(names.myFilter(myFilterCallback));
-- Explain the methods map, filter and reduce   
+
+    - You can also make callbacks to fetch requests or promises:
+
+            fetch('Someapi.com')
+            .then(callback)
+
+            callback(response) {
+                return response.json..
+            }
+
+- **Explain the methods map, filter and reduce**   
 
     - map is called upon an array and makes an operation on each element of it and returns a new array with all modified elements of same size.
     - filter is called upon an array and checks each element for a specified condition and returns a new array with a size of all elements that passed the condition.
     - The reduce() method executes a reducer function (that you provide) on each element of the array resulting in a single output value. Can be a number or object..
-- Provide examples of user defined reusable modules implemented in Node.js
+- **Provide examples of user defined reusable modules implemented in Node.js**
 
     - This could for example be the built-in HTTP Module from node. The example also includes a self made module. 
 
@@ -235,9 +257,9 @@
                 res.end();
             }).listen(8080);
 ## ES6-7 and TypeScript
-- Provide examples and explain the es2015 features: let, arrow functions, this, rest parameters, de-structuring assignments, maps/sets etc.
+- **Provide examples and explain the es2015 features: let, arrow functions, this, rest parameters, de-structuring assignments, maps/sets etc.**
 
-    - let uses block-scoping while var uses function-scoping.
+    - 'let' uses block-scoping while 'var' uses function-scoping.
 
             let callbacks = [] // LET
             for (let i = 0; i <= 2; i++) {
@@ -302,7 +324,7 @@
             true
             > set.has('red')
             false
-- Explain and demonstrate how es2015 supports modules (import and export) similar to what is offered by NodeJS.
+- **Explain and demonstrate how es2015 supports modules (import and export) similar to what is offered by NodeJS.**
     - ES6 (es2015)
 
             //------ lib.js ------
@@ -320,55 +342,70 @@
                 square: square,
                 diag: diag,
             };
+            OLDSCHOOL
             and then imported like this: 
             var square = require('lib').square;
             var diag = require('lib').diag;
             ----------
 
             //------ main.js ------
+            NEW SCHOOL
             import { square, diag } from 'lib';
             console.log(square(11)); // 121
             console.log(diag(4, 3)); // 5
-- Provide an example of ES6 inheritance and reflect over the differences between Inheritance in Java and in ES6.
+- **Provide an example of ES6 inheritance and reflect over the differences between Inheritance in Java and in ES6.**
 
-    - Reflections on differences between ES6 inheritance vs java inheritance ... ?
+    - Javascript classes can only have 1 constructor, unlike in Java multiple constructors are possible. 
 
-        class Vehicle {
- 
-        constructor (name, type) {
-            this.name = name;
-            this.type = type;
-        }
-        
-        getName () {
-            return this.name;
-        }
-        
-        getType () {
-            return this.type;
-        }
-        
-        }
-        class Car extends Vehicle {
-        
-        constructor (name) {
-            super(name, 'car');
-        }
-        
-        getName () {
-            return 'It is a car: ' + super.getName();
-        }
-        
-        }
-        let car = new Car('Tesla');
-        console.log(car.getName()); // It is a car: Tesla
-        console.log(car.getType()); // car
+            class Vehicle {
+    
+            constructor (name, type) {
+                this.name = name;
+                this.type = type;
+            }
+            
+            getName () {
+                return this.name;
+            }
+            
+            getType () {
+                return this.type;
+            }
+            
+            }
+            class Car extends Vehicle {
+            
+            constructor (name) {
+                super(name, 'car');
+            }
+            
+            getName () {
+                return 'It is a car: ' + super.getName();
+            }
+            
+            }
+            let car = new Car('Tesla');
+            console.log(car.getName()); // It is a car: Tesla
+            console.log(car.getType()); // car
 
-- Provide examples with es6, running in a browser, using Babel and Webpack
+- **Provide examples with es6, running in a browser, using Babel and Webpack**
 
     - Well. Babel converts ES6/ES7 to ES5, and this convertion can be inserted as a rule in Webpacks config file. Examples??
 
-- Provide an number of examples to demonstrate the benefits of using TypeScript, including, types, interfaces, classes and generics
+            var myfunction = (firstname, lastname) => {
+                [fname, lname] = [firstname, lastname]
+                console.log(fname, lname);
+            }
+
+            WILL TRANSPILE TO THIS (es6 -> es5)
+
+            var myfunction = function myfunction(firstname, lastname) {
+                fname = firstname;
+                lname = lastname;
+                console.log(fname, lname);
+            };
+
+- **Provide an number of examples to demonstrate the benefits of using TypeScript, including, types, interfaces, classes and generics**
 
     - makes sure the greeter function takes an argument containing the inner structure of the interface Person.
 
@@ -393,7 +430,7 @@
 
 ## Callbacks, Promises and async/await
 
-- Explain about promises in ES-6 including, the problems they solve, a quick explanation of the Promise API and:
+- **Explain about promises in ES-6 including, the problems they solve, a quick explanation of the Promise API and:**
 
     - A promise can be in one of 3 states:
 
@@ -409,9 +446,24 @@
                     reject(/* reason */);  // error, rejected
                 }
                 });
-- Example(s) that demonstrate how to avoid the callback hell  (“Pyramid of Doom")
+- **Example(s) that demonstrate how to avoid the callback hell  (“Pyramid of Doom")**
 
     - Avoid it by having additional 'then's, or by using the await keyword. too many 'then's can make await useful. Await is using promises under the hood.
+
+            This could be an example of callback hell
+
+                    doSomething(param1, param2, function(err, paramx){
+                        doMore(paramx, function(err, result){
+                            insertRow(result, function(err){
+                                yetAnotherOperation(someparameter,  function(s){
+                                    somethingElse(function(x){
+                                    });
+                                });
+                            });
+                        });
+                    });
+
+            -------------------------------------------------
 
             function getPlanetforFirstSpeciesInFirstMovieForPerson(id) {
             var starwars = {}
@@ -450,35 +502,37 @@
                 }
             }
 
-- Example(s) that demonstrate how to execute asynchronous (promise-based) code in serial or parallel
+- **Example(s) that demonstrate how to execute asynchronous (promise-based) code in serial or parallel**
 
-        FIND EXAMPLE HERE:...
+        - Making promise-based code serial would require you to use 'then's . new Promise(resolve, reject).then().then() ->
+        sequantial.
+        
 
-- Example(s) that demonstrate how to implement our own promise-solutions.
+- **Example(s) that demonstrate how to implement our own promise-solutions.**
 
     - The below example has a settimeout to image a async call.
 
             let promiseFactory = function(msg,delay) {
             return new Promise((resolve, reject)=> {
-            setTimeout(()=> { 
-                var ok = true; 
-                if (ok) {
-                resolve(msg.toUpperCase());
-                }
-                else {
-                reject("UPPPPs");
-                }
-            }, delay);
+                setTimeout(()=> { 
+                    var ok = true; 
+                    if (ok) {
+                    resolve(msg.toUpperCase());
+                    }
+                    else {
+                    reject("UPPPPs");
+                    }
+                }, delay);
             });
         };
-- Example(s) that demonstrate error handling with promises
+- **Example(s) that demonstrate error handling with promises**
 
     - The above example shows that 'reject' can handle error.
-    It could also take a 'new Error("Error)' as a argument.
+    It could also take a 'new Error("Error)' as a argument. Which we then would catch by: function(promiseblah).then().catch
 
 ## Explain about JavaScripts async/await, how it relates to promises and reasons to use it compared to the plain promise API.
 
-- Provide examples to demonstrate 
+- **Provide examples to demonstrate** 
 
         async function printNames() {
             console.log("Before");
@@ -488,7 +542,7 @@
             console.log(person2.name)
             console.log("After all"); 
         }
-- Why this often is the preferred way of handling promises
+- **Why this often is the preferred way of handling promises**
 
     - the await keyword makes promise code easier to maintain/handle especially if you have async requests dependent on each other. 
 
@@ -504,10 +558,44 @@
                     console.log(err);
                 }
   }
-- Error handling with async/await
+- **Error handling with async/await**
 
-    - you can use traditional try/catch -- more on this...
-- Serial or parallel execution with async/await.
+    - you can use traditional try/catch
+    
+            async function(request, response, next) {
+                try {
+                    await validate();
+                } catch (error) {
+                    return response.status(400).send(error);
+                }
+
+                try {
+                    const result = await doRealWork();
+                    return response.send(result);
+                } catch (error) {
+                    return next(error);
+                }
+                }
+
+                Handling the same code with promises: Much more complex..
+
+                function(request, response, next) {
+                    return validate()
+                        .then(() => true)
+                        .catch((error) => {
+                        response.status(400).send(error);
+                        return false;
+                        })
+                        .then((validationSuccess) => {
+                        if (!validationSuccess) {
+                            return;
+                        }
+                        return doRealWork()
+                            .then((result) => response.send(result));
+                        })
+                        .catch(next);
+                    }
+- **Serial or parallel execution with async/await.**
 
         async function serial(count) {
         swappiPeople = [];
