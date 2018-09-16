@@ -409,23 +409,69 @@
 
     - makes sure the greeter function takes an argument containing the inner structure of the interface Person.
 
-        class Student {
-            fullName: string;
-            constructor(public firstName: string, public lastName: string) {
-                this.fullName = firstName + " " + lastName;
+            function printType<T>(input: any): void {
+                console.log(input.constructor.name)
             }
-        }
 
-        interface Person {
-            firstName: string;
-            lastName: string;
-        }
+            function printTypes<T, K, Q>(a: T, b: K, c: Q): any[any] {
+                return [a.constructor.name, b.constructor.name, c.constructor.name]
+            }
 
-        function greeter(person : Person) {
-            return "Hello, " + person.firstName + " " + person.lastName;
-        }
+            function reverseArr<T>(arr: T[]): T[] {
+                return arr.reverse()
+            }
 
-        let user = new Student("Jane", "User");
+            // class with generic value
+
+            class DataHolder<T> { 
+                _value: T
+                constructor(value: T) {
+                    this._value = value
+                }
+                getValue(): T {
+                    return this._value
+                }
+                setValue(value: T): void {
+                    this._value = value
+                }
+            }
+
+            // Interface Owner
+
+            interface Owner {
+                owner: String;
+            }
+
+            function printOwner(owner: Owner): void { // requires the argument to have a key/value pair with key of owner, and value of string.
+                console.log(owner)
+            }
+
+            let owner = {
+                owner: "hey",
+                name: "lut"
+            }
+            let owner2 = { // wont work, has to have owner property
+                name: "lut"
+            }
+
+            printOwner(owner)
+
+            printType<String>("PUTA") // Prints String
+            console.log(printTypes<String, Date, Number>("Hello", new Date(), 13));
+            console.log(reverseArr<string>(["a","b","c"]));
+            console.log(reverseArr<number>([1,2,3]));
+            console.log(reverseArr<boolean>([true,true,false]));
+            // console.log(reverseArr<number>(["a","b","c"])); fails 
+
+            let d = new DataHolder<string>("Hello");
+            console.log(d.getValue());
+            d.setValue("World");
+            console.log(d.getValue());
+
+            let d2 = new DataHolder<number>(123);
+            console.log(d2.getValue());
+            d2.setValue(500);
+            console.log(d2.getValue());
 
 
 ## Callbacks, Promises and async/await
