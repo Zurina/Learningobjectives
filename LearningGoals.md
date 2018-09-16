@@ -504,8 +504,32 @@
 
 - **Example(s) that demonstrate how to execute asynchronous (promise-based) code in serial or parallel**
 
-        - Making promise-based code serial would require you to use 'then's . new Promise(resolve, reject).then().then() ->
-        sequantial.
+    - Making promise-based code serial would require you to use 'then's . new Promise(resolve, reject).then().then() ->
+    sequantial. And here every promise would have to wait for the previous one.
+    - making it parralel on the other hand would make each promise independent. Here is an example:
+
+            let pf = function(msg) {
+                return new Promise((resolve, reject)=> {
+                    var ok = true;
+                    if (ok) {
+                        resolve(msg.toUpperCase());
+                    }
+                    else {
+                        reject("UPPPPs");
+                    }
+                });
+            };
+ 
+
+            let promisesQuick = [pf.pfQuick('Hello1'),
+            pf.pfQuick('Hello2'),
+            pf.pfQuick('Hello3')
+            ]
+            Promise.all(promisesQuick).then(data => console.log("Quick version: " + data.join(', ')));
+
+        Here Promise.all takes an array of promises and waits for them all to resolve/reject. And hereby makes the three promises parralel instead of sequantial. This is of course only a good thing if the promises dont rely on each other. 
+
+
         
 
 - **Example(s) that demonstrate how to implement our own promise-solutions.**
@@ -513,18 +537,20 @@
     - The below example has a settimeout to image a async call.
 
             let promiseFactory = function(msg,delay) {
-            return new Promise((resolve, reject)=> {
-                setTimeout(()=> { 
-                    var ok = true; 
-                    if (ok) {
-                    resolve(msg.toUpperCase());
-                    }
-                    else {
-                    reject("UPPPPs");
-                    }
-                }, delay);
-            });
-        };
+                return new Promise((resolve, reject)=> {
+                    setTimeout(()=> { 
+                        var ok = true; 
+                        if (ok) {
+                        resolve(msg.toUpperCase());
+                        }
+                        else {
+                        reject("UPPPPs");
+                        }
+                    }, delay);
+                });
+            };
+            let operation = promiseFactory("Hello", 1000)
+            operation.then(res => dosomething())
 - **Example(s) that demonstrate error handling with promises**
 
     - The above example shows that 'reject' can handle error.
